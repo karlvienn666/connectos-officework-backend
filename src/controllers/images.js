@@ -15,9 +15,23 @@ exports.createImages = async (req, res) => {
 
 exports.getImages = async (req, res) => {
     try {
-        const docs = await imageService.findImages();
+        const {pages, limit, query} = req.query;
+        const offset = (parseInt(pages) - 1)*parseInt(limit);
+
+
+        const docs = await imageService.findImages(offset, limit, query);
         return res.status(200).json({ docs});
     } catch (error) {
         return res.status(500).json({ Error: error.message });
     }
 };
+
+exports.deleteImage = async (req,res) => {
+    try {
+        const {_id} = req.params;
+        const id = await imageService.deleteImages(_id);
+        return res.status(200).json({id});
+    } catch (error) {
+        return res.status(500).json({ Error: error.message });
+    }
+}

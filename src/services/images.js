@@ -12,19 +12,68 @@ const insertImages = (files) => {
             resolve(newDoc);
         });
     });
+    
 };
 
-const findImages = () => {
+const findImages = (offset, limit, query) => {
     const imagesCollection = datastore.images;
+
+    // return new Promise((resolve, reject) => {
+    //     imagesCollection.find({})
+    //     .skip(offset)
+    //     .limit(limit)
+    //     .exec((err, docs) => {
+    //         if (err) return reject(err);
+    //         resolve(docs);
+    //     });
+    // });
+
+    const regex = new RegExp(query, 'i');
+
     return new Promise((resolve, reject) => {
-        imagesCollection.find({}, (err, docs) => {
+        imagesCollection.find({name: {$regex: regex}})
+        .skip(offset)
+        .limit(limit)
+        .exec((err, docs) => {
             if (err) return reject(err);
             resolve(docs);
         });
     });
 };
 
+const deleteImages = (id) => {
+
+    const imagesCollection = datastore.images;
+
+    return new Promise((resolve, reject) => {
+        imagesCollection.remove({_id: id}, (err, removed) => {
+            if (err)
+               return reject(err)
+
+            resolve(id)
+        });
+    });
+}
+
+// const searchImage = (query, offset, limit) => {
+
+//     const imagesCollection = datastore.images;
+//     const regex = new RegExp(query, 'i');
+
+//     return new Promise((resolve, reject) => {
+//         imagesCollection.find({name: {$regex: regex}})
+//         .skip(offset)
+//         .limit(limit)
+//         .exec((err, docs) => {
+//             if (err) return reject(err);
+//             resolve(docs);
+//         });
+//     });
+
+// } 
+
 module.exports = {
     insertImages,
     findImages,
+    deleteImages
 };
