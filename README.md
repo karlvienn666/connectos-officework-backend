@@ -21,17 +21,7 @@ Other connections or networks is not integrated.
 To start, just copy & paste this code
 ```javascript
 npm i --save
-npm run dev
+node .
 ```
 
-To build an electron app
-```javascript
-npm i --save
-npm run build
-```
-
-Next step is to clone backend here: 
-```javascript
-git clone https://github.com/karlvienn666/connectos-officework-backend.git
-```
-
+And then run the Frontend and Backend at the same time.
