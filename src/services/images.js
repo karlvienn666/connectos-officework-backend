@@ -18,15 +18,6 @@ const insertImages = (files) => {
 const findImages = (offset, limit, query) => {
     const imagesCollection = datastore.images;
 
-    // return new Promise((resolve, reject) => {
-    //     imagesCollection.find({})
-    //     .skip(offset)
-    //     .limit(limit)
-    //     .exec((err, docs) => {
-    //         if (err) return reject(err);
-    //         resolve(docs);
-    //     });
-    // });
 
     const regex = new RegExp(query, 'i');
 
@@ -54,23 +45,6 @@ const deleteImages = (id) => {
         });
     });
 }
-
-// const searchImage = (query, offset, limit) => {
-
-//     const imagesCollection = datastore.images;
-//     const regex = new RegExp(query, 'i');
-
-//     return new Promise((resolve, reject) => {
-//         imagesCollection.find({name: {$regex: regex}})
-//         .skip(offset)
-//         .limit(limit)
-//         .exec((err, docs) => {
-//             if (err) return reject(err);
-//             resolve(docs);
-//         });
-//     });
-
-// } 
 
 module.exports = {
     insertImages,
