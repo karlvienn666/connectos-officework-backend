@@ -5,6 +5,8 @@ exports.createImages = async (req, res) => {
     if (!files || files.length === 0) {
         return res.status(400).json({ Error: 'No files uploaded.' });
     }
+
+
     try {
         const newDoc = await imageService.insertImages(files);
         return res.status(200).json(newDoc);
