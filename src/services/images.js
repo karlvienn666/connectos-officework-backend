@@ -48,6 +48,7 @@ const deleteImages = (id) => {
                    return reject(err)
     
                 try {
+                    // To remove the file from the file system
                     fs.unlinkSync(imagePath);
                     console.log(`File deleted: ${imagePath}`);
                 } catch (err) {
