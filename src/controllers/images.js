@@ -18,7 +18,7 @@ exports.createImages = async (req, res) => {
 exports.getImages = async (req, res) => {
     try {
         const {pages, limit, query} = req.query;
-        const offset = (parseInt(pages) - 1)*parseInt(limit);
+        const offset = (parseInt(pages) - 1)*parseInt(limit);   
 
 
         const docs = await imageService.findImages(offset, limit, query);

@@ -8,7 +8,7 @@ An image or file task to be completed
 
 **Client:** React, Redux, TailwindCSS, Shadcn
 
-**Server:** Node, Express
+**Server:** Node, Express, Nedb
 
 **Desktop Wrapper:** ElectronJS
 
